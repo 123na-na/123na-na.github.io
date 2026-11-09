@@ -130,6 +130,18 @@ h1 em{font-style:normal;color:var(--accent)}
 .demo figcaption{font-size:12px;color:var(--muted);margin-top:8px;text-align:center;line-height:1.6}
 .repo{display:inline-block;margin-top:8px;font-size:12px;color:var(--accent);text-decoration:none;border-bottom:1px solid #D8D2C2;padding-bottom:1px}
 .repo:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;
+  font-size:14px;letter-spacing:.02em;border:1px solid var(--accent);border-radius:2px;
+  color:var(--accent);text-decoration:none;background:transparent}
+.btn-main{background:var(--accent);color:#FBFAF6}
+.btn-main:hover,.btn-main:focus-visible{background:#0A4A3E;border-color:#0A4A3E}
+.btn-ghost:hover,.btn-ghost:focus-visible{background:var(--wash)}
+@media (max-width:560px){
+  .nav{gap:12px;font-size:12.5px}
+  .nav-resume{display:none}
+  .cta .btn{flex:1 1 auto}
+}
 @media (min-width:760px){
   .shots{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;gap:14px}
   .shot{flex:auto}
@@ -163,7 +175,7 @@ h1 em{font-style:normal;color:var(--accent)}
 <body>
 <header class="top"><div class="wrap top-in">
 <a class="brand" href="#top">马晓娜<span>·</span>作品集</a>
-<nav class="nav"><a href="#projects">项目</a><a href="#skills">能力</a><a href="#honors">荣誉</a><a href="#contact">联系</a></nav>
+<nav class="nav"><a href="#projects">项目</a><a href="#skills">能力</a><a href="#honors">荣誉</a><a class="nav-resume" href="assets/resume.pdf" target="_blank" rel="noopener">简历</a><a href="#contact">联系</a></nav>
 </div></header>
 <main id="top"><div class="wrap">
 <section class="hero"><div class="hero-grid">
@@ -171,6 +183,7 @@ h1 em{font-style:normal;color:var(--accent)}
 <p class="kicker"><b>2027 届</b> · 软件技术 · 深圳职业技术大学</p>
 <h1>马晓娜<br><em>AI 应用 × 端侧</em></h1>
 <p class="lead">我把大模型接进安卓和鸿蒙 App，也负责它在<strong>断网、缺 Key、检索不准</strong>的时候，怎么体面地退回去。</p>
+<div class="cta"><a class="btn btn-main" href="assets/resume.pdf" target="_blank" rel="noopener">查看简历 · PDF</a><a class="btn btn-ghost" href="assets/resume.pdf" download="马晓娜-简历.pdf">下载简历</a></div>
 </div>
 <dl class="idcard">
 <div><dt>可实习</dt><dd>2026.11.17 – 2027.05.31，每周 5 天</dd></div>
@@ -324,6 +337,7 @@ h1 em{font-style:normal;color:var(--accent)}
 <div class="link-row"><span>邮箱</span><a href="mailto:13450897638@163.com">13450897638@163.com</a></div>
 <div class="link-row"><span>GitHub</span><a href="https://github.com/123na-na" target="_blank" rel="noopener">github.com/123na-na</a></div>
 <div class="link-row"><span>Gitee</span><a href="https://gitee.com/Mnay0224/my-portfolio" target="_blank" rel="noopener">gitee.com/Mnay0224/my-portfolio</a></div>
+<div class="link-row"><span>简历</span><em><a href="assets/resume.pdf" target="_blank" rel="noopener">在线查看</a> · <a href="assets/resume.pdf" download="马晓娜-简历.pdf">下载 PDF</a></em></div>
 <div class="link-row"><span>可实习</span><em>2026.11.17 – 2027.05.31，每周 5 天，深圳</em></div>
 </div>
 </section>
