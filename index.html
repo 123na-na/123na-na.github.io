@@ -119,11 +119,11 @@ h3{font-size:clamp(23px,6.4vw,30px);line-height:1.16;letter-spacing:-.02em;font-
 /* ---------- 卡 6：能力 + 荣誉 ---------- */
 .caps{display:grid;grid-template-columns:1fr;gap:9px}
 .cap{background:#FCFAF9;border:1px solid var(--line);border-radius:14px;padding:14px}
-.cap h4{font:600 9.5px/1 var(--mono);letter-spacing:.1em;color:#BF736C}
+.cap h4{font:600 11px/1.35 var(--mono);letter-spacing:.04em;color:#BF736C}
 .cap p{margin-top:8px;font-size:12px;line-height:1.8;color:#33414F}
 .honors{margin-top:14px;border-top:1px dashed var(--line);padding-top:8px;display:flex;flex-direction:column;justify-content:center}
 .honor{display:flex;gap:10px;padding:11px 0;font-size:11.5px;line-height:1.7;color:#33414F;border-bottom:1px solid rgba(23,38,58,.06)}
-.honor i{flex:0 0 auto;font:500 9px/2.1 var(--mono);font-style:normal;color:var(--blue)}
+.honor i{flex:0 0 auto;font:500 10px/1.7 var(--mono);font-style:normal;color:var(--blue);letter-spacing:.04em}
 .sec-cap{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:14px 0 8px}
 .sec-cap h2{font-size:13px;font-weight:700;letter-spacing:.02em}
 .sec-cap span{font:500 9px/1 var(--mono);color:var(--muted);letter-spacing:.08em}
@@ -192,7 +192,7 @@ h2.big{font-size:clamp(22px,6.6vw,32px);line-height:1.32;letter-spacing:-.02em;f
   .p-body .shots{grid-area:shots;margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);overflow:visible}
   .shot{flex:auto}
   .shot img{max-height:190px;object-fit:contain}
-  .caps{grid-template-columns:1fr 1fr;gap:12px;flex:1;grid-template-rows:1fr 1fr}
+  .caps{grid-template-columns:repeat(3,1fr);gap:12px;flex:1;grid-template-rows:1fr}
   .cap{display:flex;flex-direction:column;justify-content:center}
   .honor{font-size:12px}
   .hud{bottom:16px}
@@ -234,13 +234,13 @@ h2.big{font-size:clamp(22px,6.6vw,32px);line-height:1.32;letter-spacing:-.02em;f
 .toc-row .n{font:600 11px/1 var(--mono);color:var(--blue);letter-spacing:.04em}
 .toc-row .t{font-size:15.5px;font-weight:600;letter-spacing:-.01em;line-height:1.3}
 .toc-row .t i{display:block;font-style:normal;font-size:10.5px;font-weight:400;color:var(--muted);margin-top:3px;line-height:1.5}
-.toc-row .k{font:500 8.5px/1.4 var(--mono);color:#BF736C;letter-spacing:.04em;text-align:right;white-space:nowrap}
+.toc-row .k{font:500 10px/1.4 var(--mono);color:#BF736C;letter-spacing:.02em;text-align:right}
 
 @media (max-width:759px){
   .toc-row{grid-template-columns:28px 1fr auto;gap:9px}
   .toc-row .t{font-size:14.5px}
   .toc-row .t i{font-size:10px}
-  .toc-row .k{font-size:8px}
+  .toc-row .k{font-size:9.5px}
 }
 
 .toc-row .th{width:58px;height:40px;border-radius:6px;overflow:hidden;background:var(--blue-l);
@@ -283,6 +283,12 @@ h2.big{font-size:clamp(22px,6.6vw,32px);line-height:1.32;letter-spacing:-.02em;f
   background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 11px}
 .chip b{font-weight:700;color:var(--blue)}
 .cv-cta{margin-top:24px}
+.cv-now{margin-top:18px;display:flex;gap:9px;align-items:baseline;font-size:11.5px;line-height:1.65;color:var(--muted);max-width:30em}
+.cv-now b{flex:0 0 auto;font:500 10px/1 var(--mono);letter-spacing:.12em;color:#BF736C}
+.todo{margin:10px 0 14px;padding:11px 0;border-top:1px dashed rgba(23,38,58,.24);border-bottom:1px dashed rgba(23,38,58,.24);
+  display:grid;grid-template-columns:auto 1fr;gap:2px 9px;align-items:start}
+.todo b{font:600 9.5px/1.9 var(--mono);letter-spacing:.06em;color:#BF736C;white-space:nowrap}
+.todo p{margin:0;font-size:12px;line-height:1.75;color:#33414F}
 
 @media (min-width:760px){
   .cv-chips{grid-template-columns:repeat(4,max-content);gap:10px}
@@ -301,6 +307,7 @@ h2.big{font-size:clamp(22px,6.6vw,32px);line-height:1.32;letter-spacing:-.02em;f
   <p class="cv-kick">2027 届 · 软件技术 · 深圳职业技术大学</p>
   <p class="cv-thesis">我把大模型接进安卓和鸿蒙 App，<br>也负责它在<em>断网</em>、<em>缺 Key</em>、<em>检索不准</em>的时候，<b>怎么体面地退回去。</b></p>
   <div class="cv-chips"><span class="chip"><b>4</b> 组项目</span><span class="chip"><b>5</b> 个仓库</span><span class="chip">专业前 <b>5%</b></span><span class="chip">HarmonyOS 高级认证</span></div>
+  <p class="cv-now"><b>现在</b>在把学习机端侧的流式补上，也在给爱宠的规则分诊补离线测试。</p>
   <div class="cta cv-cta"><a class="btn btn-main" href="assets/resume.pdf" target="_blank" rel="noopener">查看简历 · PDF</a><a class="btn btn-ghost" href="assets/resume.pdf" download="马晓娜-简历.pdf">下载简历</a></div>
 </div>
 </div>
@@ -309,13 +316,13 @@ h2.big{font-size:clamp(22px,6.6vw,32px);line-height:1.32;letter-spacing:-.02em;f
 <div class="phead"><span class="pnum">02 <i>/ 09</i></span><span class="pkind">INDEX</span></div>
 <div class="pbody center">
 <div class="toc">
-<button type="button" class="toc-row" data-go="2"><span class="n">03</span><span class="t">三问学习机<i>2025.03 – 2025.06</i></span><span class="k">鸿蒙端 + AI 中间层</span></button>
-<button type="button" class="toc-row" data-go="3"><span class="n">04</span><span class="t">爱宠 App<i>2025.09 – 2025.12</i></span><span class="k">安卓端 · 一站式宠物服务</span></button>
-<button type="button" class="toc-row" data-go="4"><span class="n">05</span><span class="t">宠物知识库 RAG + Agent<i>2025.10 – 2026.01</i></span><span class="k">后端 · 让回答有出处</span></button>
-<button type="button" class="toc-row" data-go="5"><span class="n">06</span><span class="t">旅游管理系统<i>2025 · 独立开发</i></span><span class="k">其他作品 · 地基</span></button>
-<button type="button" class="toc-row" data-go="6"><span class="n">07</span><span class="t">能力<i>能落地的四类活儿</i></span><span class="k">RAG · 鸿蒙 · 后端 · 安卓</span></button>
-<button type="button" class="toc-row" data-go="7"><span class="n">08</span><span class="t">荣誉与证书<i>前 5% 与七项记录</i></span><span class="k">2024 – 2026</span></button>
-<button type="button" class="toc-row" data-go="8"><span class="n">09</span><span class="t">联系<i>随时能聊</i></span><span class="k">邮箱 · GitHub · Gitee · 简历</span></button>
+<button type="button" class="toc-row" data-go="2"><span class="n">03</span><span class="t">三问学习机<i>2025.03 – 2025.06 · 鸿蒙端 + AI 中间层</i></span><span class="k">看 AI 怎么给答案打分</span></button>
+<button type="button" class="toc-row" data-go="3"><span class="n">04</span><span class="t">爱宠 App<i>2025.09 – 2025.12 · 安卓端</i></span><span class="k">看没网的时候怎么兜住</span></button>
+<button type="button" class="toc-row" data-go="4"><span class="n">05</span><span class="t">宠物知识库 RAG + Agent<i>2025.10 – 2026.01 · 后端</i></span><span class="k">看答案怎么带出处</span></button>
+<button type="button" class="toc-row" data-go="5"><span class="n">06</span><span class="t">旅游管理系统<i>2025 · 独立开发 · Java Web</i></span><span class="k">看没有框架的地基</span></button>
+<button type="button" class="toc-row" data-go="6"><span class="n">07</span><span class="t">排障<i>我修过的三个真问题</i></span><span class="k">看我怎么定位</span></button>
+<button type="button" class="toc-row" data-go="7"><span class="n">08</span><span class="t">荣誉与证书<i>2024 – 2026</i></span><span class="k">30 秒看完</span></button>
+<button type="button" class="toc-row" data-go="8"><span class="n">09</span><span class="t">联系<i>邮箱 · GitHub · Gitee · 简历</i></span><span class="k">想聊就点</span></button>
 </div>
 </div>
 </section>
@@ -328,11 +335,11 @@ h2.big{font-size:clamp(22px,6.6vw,32px);line-height:1.32;letter-spacing:-.02em;f
 </div>
 <p class="p-meta">2025.03 – 2025.06<br>独立开发（端 + 中间层）<br>ArkTS · ArkUI · FastAPI<br>DeepSeek · SSE · Docker<br><a class="repo" href="https://github.com/123na-na/three-question-study-machine" target="_blank" rel="noopener">three-question-study-machine</a></p>
 </div>
+<div class="todo"><b>这条我没做完</b><p>流式只做在后端 /evaluate/stream，端侧还是整段请求等 60 秒。下一步是把它接到 ArkTS 的 SSE 回调上。</p></div>
 <div class="p-body">
 <dl class="implement">
 <div class="impl"><dt>端侧</dt><dd>7 个页面（首页、登录、课程详情、作答、复习、进度看板、学习报告）全在 ArkTS / ArkUI；6 张本地表落盘，复习走间隔重复。</dd></div>
 <div class="impl"><dt>提示词</dt><dd>4 个接口、6 套提示词：三问各一套评分维度，另配追问、复习轻量版与兜底。</dd></div>
-<div class="impl"><dt>流式</dt><dd>后端给出 /evaluate/stream 分段推送；端侧当前是整段请求 + 60s 超时，接流式是下一步。</dd></div>
 <div class="impl"><dt>部署</dt><dd>Dockerfile + docker-compose，带健康检查，一条命令起服务。</dd></div>
 </dl>
 <figure class="demo">
@@ -428,14 +435,13 @@ h2.big{font-size:clamp(22px,6.6vw,32px);line-height:1.32;letter-spacing:-.02em;f
 </article></div>
 </section>
 <section class="page down" aria-label="能力">
-<div class="phead"><span class="pnum">07 <i>/ 09</i></span><span class="pkind">CAPABILITY</span></div>
+<div class="phead"><span class="pnum">07 <i>/ 09</i></span><span class="pkind">DEBUG</span></div>
 <div class="pbody spread">
-<div class="sec-cap"><h2>能力</h2><span>WHAT I CAN DO</span></div>
+<div class="sec-cap"><h2>排障</h2><span>THREE BUGS I FIXED</span></div>
 <div class="caps">
-<div class="cap"><h4>AI 应用</h4><p>切片 → 本地 Embedding → 余弦 top-4 → sources 回传；缺 Key 就退回检索。实测 4 条召回、余弦距离 0.4568–0.4909。仓库 pet-feeding-rag</p></div>
-<div class="cap"><h4>鸿蒙端</h4><p>在 ArkTS / ArkUI 里把 AI 接完、也兜住失败：7 页、6 张本地表、4 个接口、6 套提示词、60s 超时；容器 Up (healthy)。仓库 three-question-study-machine</p></div>
-<div class="cap"><h4>后端与工程</h4><p>compose 健康检查每 30s 打一次 /health，一条命令起服务；老底座手写 bean / dao / service / servlet 四层，55 个类。仓库 tourist-attraction-jsp</p></div>
-<div class="cap"><h4>安卓端</h4><p>离线优先：98 个类、6 张表、20 条上下文；规则分诊 7 类疾病带科室，没网也能拦住危险食物。仓库 love-pet-android</p></div>
+<div class="cap"><h4>评分全返 60</h4><p>配好 Key、同一份答案连打 5 次，还是全 60 分。真因是旧的 uvicorn 进程还占着 8000 端口，pkill 抓不到它；按端口找到进程 kill 掉再重启，评分才回到 88 – 92。</p></div>
+<div class="cap"><h4>装不上 chromadb</h4><p>本机 pip 装 chromadb 直接 ResolutionImpossible——Mac 上的 Python 3.14 没有对应轮子。换到 Python 3.12 的云主机一次装成，mode 从 retrieval_only 变成 llm。</p></div>
+<div class="cap"><h4>查不到就说不查不到</h4><p>Agent 被问「2026 年深圳宠物展会」，联网搜了两次没有可靠结果，就如实说查不到，不补一个像真的日期。</p></div>
 </div>
 </div>
 </section>
@@ -444,13 +450,10 @@ h2.big{font-size:clamp(22px,6.6vw,32px);line-height:1.32;letter-spacing:-.02em;f
 <div class="pbody spread">
 <div class="sec-cap"><h2>荣誉与证书</h2><span>2024 – 2026</span></div>
 <div class="honors">
-<div class="honor"><i>01</i><span>专业综合排名前 5%（81 人），连续 3 学期获校级二等奖学金</span></div>
-<div class="honor"><i>02</i><span>HarmonyOS 应用开发者高级认证</span></div>
-<div class="honor"><i>03</i><span>HCIA-openEuler 认证</span></div>
-<div class="honor"><i>04</i><span>蓝桥杯省赛三等奖</span></div>
-<div class="honor"><i>05</i><span>校「三好学生」、优秀共青团员</span></div>
-<div class="honor"><i>06</i><span>第十五届全运会火炬手、优秀赛会志愿者</span></div>
-<div class="honor"><i>07</i><span>大学英语四级（CET-4）</span></div>
+<div class="honor"><i>学业</i><span>专业综合排名前 5%（81 人）· 连续 3 学期获校级二等奖学金</span></div>
+<div class="honor"><i>认证</i><span>HarmonyOS 应用开发者高级认证 · HCIA-openEuler 认证</span></div>
+<div class="honor"><i>竞赛</i><span>蓝桥杯省赛三等奖 · 校「三好学生」· 优秀共青团员</span></div>
+<div class="honor"><i>其他</i><span>第十五届全运会火炬手、优秀赛会志愿者 · 大学英语四级（CET-4）</span></div>
 </div>
 </div>
 </section>
