@@ -295,6 +295,8 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
   <img data-key="shot-study-question.png" src="assets/shot-study-question.png" alt="">
   <img data-key="shot-pet-home.png" src="assets/shot-pet-home.png" alt="">
   <img data-key="shot-pet-shop.png" src="assets/shot-pet-shop.png" alt="">
+  <img data-key="shot-pet-report.png" src="assets/shot-pet-report.png" alt="">
+  <img data-key="shot-pet-chat-img.png" src="assets/shot-pet-chat-img.png" alt="">
   <img data-key="shot-rag-evidence.png" src="assets/shot-rag-evidence.png" alt="">
   <video data-key="videos/three-question-study-machine.mp4" src="assets/videos/three-question-study-machine.mp4" preload="none" muted></video>
   <video data-key="videos/pet-feeding-ai.mp4" src="assets/videos/pet-feeding-ai.mp4" preload="none" muted></video>
@@ -450,20 +452,21 @@ const PROJECTS = [
       { img: "shot-pet-shop.png", t: "商城", d: "八类圆形品类导航 + 精选好物，商品与订单数据存本地" }
     ],
     repo: "love-pet-android",
-    desc: "Java 原生 Android 宠物服务 App：规则评分式症状分诊 + AI 问答 + 商城、预约、领养多模块，SQLite 本地存储。",
-    short: "Android 宠物 App：分诊引擎 + 商城与预约业务。",
-    tags: ["Java", "SQLite", "Android"],
-    result: "67 个页面，分诊 / 商城 / 预约 / 领养在同一应用内闭环",
+    desc: "Java 原生 Android 宠物服务 App：规则评分式症状分诊 + AI 问答与多模态读图 + 商城、预约、领养多模块，SQLite 本地存储。",
+    short: "Android 宠物 App：分诊引擎 + 多模态 AI 问答 + 商城预约业务。",
+    tags: ["Java", "SQLite", "Android", "多模态"],
+    result: "67 个页面，分诊 / 商城 / 预约 / 领养闭环，客服与报告解读支持读图",
     direction: "移动端",
     cover: `<div class="cover-scene"><img class="ph back" src="${A('shot-pet-shop.png')}" alt="爱宠商城页"><img class="ph" src="${A('shot-pet-home.png')}" alt="爱宠首页"><span class="cover-cap">Android<br>67 个原生页面</span></div>`,
-    shots: [A("shot-pet-home.png"), A("shot-pet-shop.png")],
+    shots: [A("shot-pet-home.png"), A("shot-pet-shop.png"), A("shot-pet-report.png"), A("shot-pet-chat-img.png")],
     github: "https://github.com/123na-na/love-pet-android",
-    background: "养宠日常的疑问分两类：这个症状要不要紧，宠物能不能吃、要不要买。爱宠用一套原生 Android 应用全部承接：症状分诊按规则权重算出疾病概率、紧急等级与建议科室，AI 问答接开放式问题，再往上叠商城、门店洗护美容预约、领养申请、医院挂号、疫苗与用药提醒，档案和记录统一落 SQLite。",
+    background: "养宠日常的疑问分两类：这个症状要不要紧，宠物能不能吃、要不要买。爱宠用一套原生 Android 应用全部承接：症状分诊按规则权重算出疾病概率、紧急等级与建议科室，AI 问答接开放式问题并支持直接发照片问（客服读图），再往上叠商城、门店洗护美容预约、领养申请、医院挂号、疫苗与用药提醒，档案和记录统一落 SQLite；化验单也能上传，由视觉模型读出指标并标出偏离项。",
     roles: [
       "分诊引擎：6 类症状聚合权重打分，叠加年龄、宠物类型、描述文本三个系数，输出概率、紧急等级与建议科室",
       "业务模块：商城（购物车 / 订单 / 钱包 / 支付密码）、门店洗护美容预约、领养申请与审核、医院挂号",
       "系统能力：高德地图选点、语音输入、微信分享、电子宠物证、疫苗与用药提醒",
-      "数据层：PetDatabaseHelper 统一 SQLite 建表与读写，宠物档案 / 订单 / 记录本地可用"
+      "数据层：PetDatabaseHelper 统一 SQLite 建表与读写，宠物档案 / 订单 / 记录本地可用",
+      "AI 能力：qwen-plus 走文字问答、qwen3-vl-plus 走读图，图片按最长边 1024 等比压缩后转 base64 data URL，以 image_url 内容块送模型；模型名与 Key 均从 BuildConfig 注入"
     ],
     roleSummary: "67 个页面、分诊规则引擎与全部业务模块，以及 SQLite 本地数据层设计。",
     steps: [
@@ -473,12 +476,14 @@ const PROJECTS = [
     ],
     hards: [
       { t: "难点 1 · 分诊规则不能靠 if-else 堆", p: "症状组合多，纯条件判断很快膨胀失控，改一条规则就担心碰坏另一条。", s: "把症状抽象成权重特征表，按消化、皮肤、呼吸、泌尿、神经、全身 6 类聚合打分，再用年龄系数、宠物类型系数、描述文本系数加权，概率上限 0.95，紧急等级单独判定——规则可配、可回归验证。" },
-      { t: "难点 2 · 高频入口的离线可用性", p: "分诊和档案是每天都要用的入口，弱网或没网时不能直接不可用。", s: "宠物档案、疫苗、用药、订单全部落 SQLite 本地表，分诊在本地完成计算，联网只留给 AI 问答与地图选点，基础体验不依赖网络。" }
+      { t: "难点 2 · 高频入口的离线可用性", p: "分诊和档案是每天都要用的入口，弱网或没网时不能直接不可用。", s: "宠物档案、疫苗、用药、订单全部落 SQLite 本地表，分诊在本地完成计算，联网只留给 AI 问答与地图选点，基础体验不依赖网络。" },
+      { t: "难点 3 · 视觉模型不是换个模型名就能跑", p: "接多模态时先按旧文档用 qwen-vl-plus，接口直接回 404 Model not exist；想退回去用 qwen-turbo 拿文本模型凑，又持续 429 限流。", s: "把模型名从代码里挪进 local.properties，构建时注入 BuildConfig（默认 qwen-plus / qwen3-vl-plus）；先用 /v1/models 确认当前可用型号，再用带 image_url 的请求看响应里的 image_tokens 字段，确认图片真的进了模型而不是只发了文字。" }
     ],
     stats: [
       { n: "67", l: "原生页面（98 个 Java 类）", shot: "shot-pet-home.png", cap: "真机截图 · 爱宠首页" },
       { n: "6 类", l: "症状维度聚合打分", shot: "shot-pet-home.png", cap: "首页入口 · 分诊 / 商城 / 预约 / 领养闭环" },
-      { n: "SQLite", l: "档案 / 订单 / 记录全本地", shot: "shot-pet-shop.png", cap: "商城页 · 商品与订单数据存本地 SQLite" }
+      { n: "SQLite", l: "档案 / 订单 / 记录全本地", shot: "shot-pet-shop.png", cap: "商城页 · 商品与订单数据存本地 SQLite" },
+      { n: "2 条", l: "读图链路（客服选图 / 报告解读）", shot: "shot-pet-report.png", cap: "真机截图 · 化验单读出的指标与偏离项" }
     ]
   },
   {
