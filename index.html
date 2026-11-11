@@ -1060,22 +1060,14 @@ function route() {
         <li>后端与部署：FastAPI 服务化 + Docker Compose 容器化，Servlet / JSP / JDBC 手写 Web 基础</li>
         <li>全部项目代码在 <a href="https://github.com/123na-na" target="_blank" rel="noopener" style="color:var(--blue)">GitHub</a> 开源</li>
       </ul>
-      <p style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn btn-primary" onclick="openResume()">查看简历</button>
-        <button class="btn btn-outline" onclick="downloadResume()">下载简历</button>
-      </p>
-      <p style="margin-top:16px"><a class="btn btn-primary" href="#/projects">查看项目 →</a></p>`);
+      <p style="margin-top:24px"><a class="btn btn-primary" href="#/projects">查看项目 →</a></p>`);
   } else if (mContact) {
     app.innerHTML = renderSimple("联系我", `
       <p style="font-size:15px;line-height:1.9">正在寻找 AI 应用开发 / 前端 · 全栈 / 移动端开发机会，欢迎直接通过 GitHub 找到我：</p>
       <ul class="d-list" style="margin-top:16px">
         <li>GitHub：<a class="mono" style="color:var(--blue)" href="https://github.com/123na-na" target="_blank" rel="noopener">github.com/123na-na</a></li>
         <li>项目：5 个仓库全部开源，含 README、运行方式与运行截图</li>
-      </ul>
-      <p style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
-        <button class="btn btn-primary" onclick="openResume()">查看简历</button>
-        <button class="btn btn-outline" onclick="downloadResume()">下载简历</button>
-      </p>`);
+      </ul>`);
   } else {
     app.innerHTML = renderHome();
   }
