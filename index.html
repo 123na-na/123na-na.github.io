@@ -85,19 +85,15 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
 .cap-card p{font-size:14px;color:var(--muted);line-height:1.7}
 .cap-card .evidence{font-family:var(--mono);font-size:11px;color:var(--blue);line-height:1.7;word-break:break-all}
 
-/* ---------- Metric strip ---------- */
-.metric-strip{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.metric-grid{display:grid;grid-template-columns:repeat(4,1fr)}
-.metric{padding:24px 18px;text-align:center;border-right:1px solid var(--line)}
-.metric:last-child{border-right:0}
-.metric .n{font-family:var(--mono);font-size:28px;line-height:1.1;font-weight:600;color:var(--ink)}
-.metric .l{margin-top:6px;font-size:12.5px;color:var(--muted);letter-spacing:.02em}
-@media (max-width:720px){
-  .metric-grid{grid-template-columns:repeat(2,1fr)}
-  .metric{padding:18px 12px}
-  .metric:nth-child(2){border-right:0}
-  .metric:nth-child(1),.metric:nth-child(2){border-bottom:1px solid var(--line)}
-  .metric .n{font-size:23px}
+/* ---------- Hero metrics ---------- */
+.hero-metrics{display:flex;flex-wrap:wrap;gap:10px 26px;margin:26px 0 22px}
+.hero-metrics .m{display:flex;align-items:baseline;gap:7px}
+.hero-metrics .n{font-family:var(--mono);font-size:20px;line-height:1.2;font-weight:600;color:var(--ink)}
+.hero-metrics .l{font-size:12.5px;color:var(--muted);letter-spacing:.02em}
+@media (max-width:600px){
+  .hero-metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;margin:20px 0 20px}
+  .hero-metrics .n{font-size:18px}
+  .hero-metrics .l{font-size:12px}
 }
 
 /* ---------- Project cards ---------- */
@@ -690,6 +686,12 @@ function renderHome() {
       <div class="chips">
         ${["ArkTS","Android / Java","Python","FastAPI","LangGraph","RAG","SSE 流式"].map(t=>`<span class="chip">${t}</span>`).join("")}
       </div>
+      <div class="hero-metrics">
+        <div class="m"><span class="n">5</span><span class="l">开源项目</span></div>
+        <div class="m"><span class="n">6</span><span class="l">GitHub 仓库</span></div>
+        <div class="m"><span class="n">3</span><span class="l">技术方向</span></div>
+        <div class="m"><span class="n">5</span><span class="l">段运行演示</span></div>
+      </div>
       <div class="hero-ctas">
         <a class="btn btn-primary btn-lg" href="#/projects">查看项目</a>
         <a class="btn btn-outline btn-lg mono" href="https://github.com/123na-na" target="_blank" rel="noopener">GitHub
@@ -702,15 +704,6 @@ function renderHome() {
       <img class="hs c" src="${A('shot-pet-home.png')}" alt="爱宠 App 首页" loading="eager">
     </div>
   </div></div></section>
-
-  <section class="metric-strip"><div class="container">
-    <div class="metric-grid">
-      <div class="metric"><div class="n">5</div><div class="l">开源项目</div></div>
-      <div class="metric"><div class="n">6</div><div class="l">GitHub 仓库</div></div>
-      <div class="metric"><div class="n">3</div><div class="l">技术方向</div></div>
-      <div class="metric"><div class="n">5</div><div class="l">段运行演示</div></div>
-    </div>
-  </div></section>
 
   <section class="section"><div class="container">
     <div class="section-head">
