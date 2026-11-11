@@ -1067,7 +1067,11 @@ function route() {
       <ul class="d-list" style="margin-top:16px">
         <li>GitHub：<a class="mono" style="color:var(--blue)" href="https://github.com/123na-na" target="_blank" rel="noopener">github.com/123na-na</a></li>
         <li>项目：5 个仓库全部开源，含 README、运行方式与运行截图</li>
-      </ul>`);
+      </ul>
+      <p style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn btn-primary" href="assets/resume.pdf" target="_blank" rel="noopener">查看简历</a>
+        <a class="btn btn-outline" href="assets/resume.pdf" download="马晓娜-AI应用开发工程师-简历.pdf">下载简历</a>
+      </p>`);
   } else {
     app.innerHTML = renderHome();
   }
