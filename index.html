@@ -289,6 +289,10 @@ button{font-family:inherit;border:none;background:none;cursor:pointer}
   <video data-key="videos/pet-feeding-ai.mp4" src="assets/videos/pet-feeding-ai.mp4" preload="none" muted></video>
   <video data-key="videos/love-pet-android.mp4" src="assets/videos/love-pet-android.mp4" preload="none" muted></video>
   <video data-key="videos/tourist-attraction-jsp.mp4" src="assets/videos/tourist-attraction-jsp.mp4" preload="none" muted></video>
+<img data-key="shot-armor-desk.png" src="assets/shot-armor-desk.png" alt="">
+<img data-key="shot-armor-garage.png" src="assets/shot-armor-garage.png" alt="">
+<img data-key="shot-armor-battle.png" src="assets/shot-armor-battle.png" alt="">
+<video data-key="videos/armored-frontline.mp4" src="assets/videos/armored-frontline.mp4" preload="none" muted></video>
   <link rel="alternate" type="application/pdf" href="assets/resume.pdf" title="简历">
 </div>
 
@@ -464,6 +468,42 @@ const PROJECTS = [
       { n: "67", l: "原生页面（98 个 Java 类）", shot: "shot-pet-home.png", cap: "真机截图 · 爱宠首页" },
       { n: "6 类", l: "症状维度聚合打分", shot: "shot-pet-home.png", cap: "首页入口 · 分诊 / 商城 / 预约 / 领养闭环" },
       { n: "SQLite", l: "档案 / 订单 / 记录全本地", shot: "shot-pet-shop.png", cap: "商城页 · 商品与订单数据存本地 SQLite" }
+    ]
+  },
+  {
+    id: "armored-frontline",
+    name: "装甲前线（HarmonyOS）",
+    repo: "armored-frontline",
+    desc: "鸿蒙竖屏装甲战术游戏：20×20 战场，四种战术姿态与四类支援指令，5 个战役、7 辆坦克、勋章与存档，单 Canvas 自绘全部画面。",
+    short: "ArkTS 竖屏战术游戏：战场 AI、Canvas 渲染与战役系统。",
+    tags: ["ArkTS", "ArkUI", "Canvas", "游戏引擎"],
+    result: "5 个战役 / 7 辆车 / 20×20 战场，模拟器实机录屏 51 秒",
+    direction: "移动端",
+    cover: `<div class="cover-scene"><img class="ph back" src="${A('shot-armor-battle.png')}" alt="装甲前线战斗界面"><img class="ph" src="${A('shot-armor-desk.png')}" alt="装甲前线指挥台"><span class="cover-cap">HarmonyOS<br>20×20 装甲战场</span></div>`,
+    shots: [A("shot-armor-desk.png"), A("shot-armor-garage.png"), A("shot-armor-battle.png")],
+    github: "https://github.com/123na-na/armored-frontline",
+    hasVideo: true,
+    background: "把红白机《坦克大战》的俯视画面，改成一套军事指挥终端语境的竖屏装甲战：深色底配金色衬线标题，进战场前先经过指挥台、作战简报、坦克库与勋章陈列，战斗中是 20×20 网格的阵地防御，玩法由「移动 + 开火」扩成「四个战术姿态 + 四类支援指令」。",
+    roles: [
+      "引擎：自研固定节拍主循环（16 ms tick，dt 钳制 0.06 s）与 IDLE / DEPLOY / FIGHTING / PAUSED / SUCCESS / FAILED 六态战斗状态机",
+      "渲染：单个 Canvas 逐帧绘制地形、坦克、弹道、爆炸与 HUD，五种地形主题（雪原 / 河谷 / 沙漠 / 要塞 / 柏林）",
+      "玩法：跟随 / 驻守 / 突击 / 集火四种姿态，空袭、侦察、维修、烟幕四种支援（CP 与冷却约束）；敌军 1–2.5 s 重选目标并按概率压向玩家或指挥所",
+      "数据与存档：5 个战役、7 辆车、5 枚勋章数据表化，preferences 单键存档（军费 / 击毁数 / 解锁进度）"
+    ],
+    roleSummary: "从引擎、渲染到玩法与存档的完整实现：战斗循环与状态机、Canvas 战场渲染、战术指令与敌军 AI、战役与勋章系统。",
+    steps: [
+      { n: "1", t: "战前部署", d: "指挥台读战区进度与军费，作战简报选关，部署页确认目标与时限后进战场" },
+      { n: "2", t: "阵地指挥", d: "十字键机动与开火，切战术姿态改僚机行为，CP 够时呼叫空袭、侦察、维修或烟幕" },
+      { n: "3", t: "战后结算", d: "战报按击毁数、剩余时间与 CP 结算得分，未达标可再次出击或返回战役" }
+    ],
+    hards: [
+      { t: "难点 1 · 战斗撑不过 5 秒", p: "首版录屏里进战场几秒就判负：敌军全速压向指挥所与玩家，指挥所耐久只有 2、同屏敌军没有上限，玩家根本没时间操作。", s: "按「玩家能反应的节奏」重算数值：五类敌速整体下调约四成（SCOUT 108→64、FAST 118→72、HEAVY 56→38、ELITE 84→52、NORMAL 76→48），同屏敌军上限压到 3、补充间隔 2.0→3.0 s、指挥所耐久 2→6；玩家装甲 +1，受击后 1 s 无敌、重生 4 s 无敌。重录后战斗稳定推进到 150 s 以上。" },
+      { t: "难点 2 · 模拟器画面抓不出来", p: "Windows 侧枚举窗口发现模拟器主窗在 -25600,-25600、客户区 0×0，只有 NVOGLDC 的 pbuffer，全屏截图只拿到桌面壁纸，设备端也没有 screenrecord 可用。", s: "改在设备内用 snapshot_display 批量截帧（单帧约 400 ms，一批 10 帧约 1.4 s），按批次编号落盘并记录真实毫秒时间戳，再按 30 fps、720×1560 铺帧合成，尾帧多留 1.2 s，最后用 libx264 crf 20 + faststart 转出 51 秒成片。" }
+    ],
+    stats: [
+      { n: "20×20", l: "战场网格（tile 24 px，单 Canvas 绘制）", shot: "shot-armor-battle.png", cap: "战斗页 · HUD、战场与十字键同屏" },
+      { n: "5 / 7", l: "战役与可选车辆", shot: "shot-armor-garage.png", cap: "坦克库 · 7 辆车参数与军费解锁" },
+      { n: "51 s", l: "模拟器实机录屏（720×1560）", shot: "shot-armor-desk.png", cap: "指挥台 · 战区进度与四个入口" }
     ]
   },
   {
@@ -704,7 +744,7 @@ function renderProjects() {
   return h(`
   <section class="detail-wrap"><div class="container">
     <h1 style="font-size:clamp(26px,3vw,34px);color:var(--ink);font-weight:700">项目</h1>
-    <p style="color:var(--muted);margin-top:8px;font-size:15px">4 个已开源项目，代码全部可在 GitHub 查到 —— 从 AI 应用工程到多端移动开发</p>
+    <p style="color:var(--muted);margin-top:8px;font-size:15px">5 个已开源项目，代码全部可在 GitHub 查到 —— 从 AI 应用工程到多端移动开发</p>
     <div class="filter-bar" style="margin-top:28px">
       <div class="filter-chips">
         ${FILTERS.map(f=>`<button class="fchip ${f===currentFilter?'active':''}" onclick="setFilter('${f}')">${f}</button>`).join("")}
@@ -853,6 +893,7 @@ function openVideoModal(id) {
     "three-question-study-machine": "真实运行录屏 · 首页 → 我的课程 → 课程详情 → 三问作答 → AI 评分与追问",
     "pet-feeding-ai": "真实运行录屏 · 提问 → 向量召回 4 条切片 → 带 sources 返回",
     "love-pet-android": "真实运行录屏 · 游客登录 → 首页 → 医疗服务 → AI 自查 → 诊断结果",
+    "armored-frontline": "模拟器实机录屏 · 指挥台 → 作战简报 → 坦克库 → 勋章 → 部署 → 战斗（51 秒完整流程）",
     "tourist-attraction-jsp": "真实运行录屏 · 登录 → 商品列表 → 详情 → 购物车 → 商品新增 → 分类管理"
   };
   document.getElementById("vmFootNote").textContent = NOTES[p.id] || "真实运行录屏";
@@ -1011,7 +1052,7 @@ function route() {
       <p style="font-size:15px;line-height:1.9">正在寻找 AI 应用开发 / 前端 · 全栈 / 移动端开发机会，欢迎直接通过 GitHub 找到我：</p>
       <ul class="d-list" style="margin-top:16px">
         <li>GitHub：<a class="mono" style="color:var(--blue)" href="https://github.com/123na-na" target="_blank" rel="noopener">github.com/123na-na</a></li>
-        <li>项目：4 个仓库全部开源，含 README、运行方式与运行截图</li>
+        <li>项目：5 个仓库全部开源，含 README、运行方式与运行截图</li>
       </ul>
       <p style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
         <button class="btn btn-primary" onclick="openResume()">查看简历</button>
